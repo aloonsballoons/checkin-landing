@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --cream: #faf4ea;
+    --paper: #fffcf6;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    font-feature-settings: "ss01", "cv05";
+  }
+
+  ::selection {
+    background-color: #e8c2ae;
+    color: #2c2520;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-serif;
+    font-optical-sizing: auto;
+    letter-spacing: -0.015em;
+  }
+
+  /* Respect users who prefer less motion. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-paper/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-clay-deep;
+  }
+
+  /* Soft warm paper grain — pure SVG, no asset request. */
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+@layer utilities {
+  /* Warm radial washes used behind sections for depth. */
+  .wash-hero {
+    background:
+      radial-gradient(60% 50% at 78% 18%, rgba(192, 97, 63, 0.14), transparent 70%),
+      radial-gradient(55% 45% at 12% 12%, rgba(126, 140, 110, 0.12), transparent 72%),
+      radial-gradient(80% 60% at 50% 100%, rgba(243, 232, 214, 0.7), transparent 70%);
+  }
+  .wash-soft {
+    background: radial-gradient(
+      70% 60% at 50% 0%,
+      rgba(246, 229, 218, 0.6),
+      transparent 70%
+    );
+  }
+}
