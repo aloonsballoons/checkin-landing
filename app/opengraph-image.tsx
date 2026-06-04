@@ -32,8 +32,11 @@ export default function Image() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "84px 96px",
-          background:
-            "radial-gradient(60% 55% at 80% 12%, rgba(192,97,63,0.16), transparent 70%), #FAF4EA",
+          // Satori parses the `background` shorthand as a list of images, so a
+          // trailing solid color is invalid — set color and gradient separately.
+          backgroundColor: "#FAF4EA",
+          backgroundImage:
+            "radial-gradient(60% 55% at 80% 12%, rgba(192,97,63,0.16), transparent 70%)",
           color: "#2C2520",
         }}
       >

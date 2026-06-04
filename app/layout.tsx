@@ -15,7 +15,10 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const title = "CheckIn — a daily call that helps Mom or Dad stay independent";
+// The browser tab shows just the brand; the longer line is kept for social
+// shares, where there's room for the full pitch.
+const title = "CheckIn";
+const shareTitle = "CheckIn — a daily call that helps Mom or Dad stay independent";
 const description =
   "A landline-simple companion that calls your aging parent every day, helps them stay on top of meds and appointments, remembers what matters, and texts you if something's wrong. No app. No smartphone. Nothing for them to set up.";
 
@@ -24,14 +27,14 @@ export const metadata: Metadata = {
   description,
   metadataBase: new URL("https://checkin.example.com"),
   openGraph: {
-    title,
+    title: shareTitle,
     description,
     type: "website",
     siteName: "CheckIn",
   },
   twitter: {
     card: "summary_large_image",
-    title,
+    title: shareTitle,
     description,
   },
   // Favicon, apple-touch icon, and OG image are file-based and auto-detected by
