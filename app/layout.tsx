@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   // Favicon, apple-touch icon, and OG image are file-based and auto-detected by
   // the App Router: app/icon.svg, app/apple-icon.svg, app/opengraph-image.tsx —
-  // all drawn from the hand-authored "Presence" mark (see components/Logo.tsx).
+  // all drawn from the hand-authored heart-and-receiver mark (components/Logo.tsx).
 };
 
 export const viewport: Viewport = {

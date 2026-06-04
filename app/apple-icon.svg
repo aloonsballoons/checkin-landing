@@ -12,9 +12,8 @@
   <rect width="180" height="180" fill="#A8492C"/>
   <rect x="20" y="20" width="140" height="140" rx="40" fill="url(#t)"/>
   <rect x="20" y="20" width="140" height="140" rx="40" fill="url(#s)"/>
-  <g transform="translate(90 90) scale(3.0) translate(-20 -20)">
-    <path fill-rule="evenodd" fill="#FFFCF6"
-      d="M20 31.8 C7.5 23.2 6.5 16.2 9.2 12.5 C11.9 8.9 17.2 9.6 20 14.1 C22.8 9.6 28.1 8.9 30.8 12.5 C33.5 16.2 32.5 23.2 20 31.8 Z
-         M15.2 13.9 c-1.6 .3 -2.6 1.55 -2.3 3.15 1.15 6.4 6.75 12 13.15 13.15 1.6 .3 2.85-.7 3.15-2.3 .3-1.45 -.3-2.35 -1.65-2.95 l-2.9-1.2 c-1-.4 -1.55-.2 -2.25 .4 -1.95-1.2 -3.55-2.8 -4.75-4.75 .6-.7 .8-1.25 .4-2.25 l-1.2-2.9 c-.6-1.35 -1.5-1.95 -2.95-1.65 Z"/>
+  <!-- A heart with a telephone receiver carved out in negative space. Same evenodd glyph as the favicon and header lockup, scaled onto the 40-unit grid. -->
+  <g transform="translate(90 90) scale(3.6) translate(-20 -20)">
+    <path fill-rule="evenodd" fill="#FFFCF6" d="M20 33.5 C6 24.5 4.6 17.3 7.8 13.2 C10.8 9.4 16.4 10 20 15 C23.6 10 29.2 9.4 32.2 13.2 C35.4 17.3 34 24.5 20 33.5 Z M15 14.6 c-1.9 .35 -3 1.9 -2.65 3.8 c1.35 7.3 7.55 13.5 14.85 14.85 c1.9 .35 3.45-.75 3.8-2.65 c.35-1.75 -.45-2.85 -2.05-3.5 l-2.5-1 c-1.25-.5 -2-.15 -2.75 .65 c-1.9-1.25 -3.45-2.8 -4.7-4.7 c.8-.75 1.15-1.5 .65-2.75 l-1-2.5 c-.65-1.6 -1.75-2.4 -3.5-2.05 Z"/>
   </g>
 </svg>

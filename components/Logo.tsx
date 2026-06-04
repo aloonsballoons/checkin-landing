@@ -5,22 +5,20 @@ import { cn } from "@/lib/utils";
  * CheckIn brand system
  * ====================
  *
- * Concept (PRIMARY) — "A caring phone call": a telephone handset whose lower
- * mouthpiece is a heart. One idea, two readings — the daily call (the receiver)
- * made with love (the heart). Warm and human, never clinical, and it stays
- * legible all the way down to a 24px favicon.
+ * Concept (PRIMARY) — "A call held with love": a heart with a telephone
+ * receiver carved out of it in negative space. One mark, two instant readings —
+ * the warmth (the heart) and the daily call (the handset). It says caring and
+ * human, never clinical, and the heart silhouette keeps it legible all the way
+ * down to a 24px favicon even when the receiver detail softens.
  *
- * The handset is built from three same-fill pieces (oval earpiece + handle +
- * heart) that union into one silhouette, so it recolors with one fill:
- *   - color tone → a cream handset on a solid clay squircle
- *   - mono tone  → the handset fills `currentColor` (cream in the footer, the
- *                  dark surface on a CTA)
+ * The whole glyph is a single `evenodd` path, so it recolors with one fill and
+ * the receiver "hole" simply shows whatever sits behind it:
+ *   - color tone → a cream heart on a solid clay squircle (clay shows through
+ *                  the receiver)
+ *   - mono tone  → the heart fills `currentColor` (cream in the footer, the
+ *                  dark surface on a CTA) and the receiver shows the backdrop
  *
  * The wordmark carries the same idea: a small clay heart punctuates the name.
- *
- * An alternate mark (concept B, "Caring conversation") — a speech bubble
- * cradling a heart — is exported as `BubbleMark`. To make it the primary mark
- * everywhere, point `PrimaryMark` at it (see below).
  *
  * Everything is hand-drawn SVG on a 40-unit grid. Tokens mirror
  * tailwind.config.ts: clay #C0613F · clay-deep #A8492C · paper #FFFCF6 ·
@@ -36,24 +34,30 @@ type MarkProps = {
   tone?: Tone;
 };
 
+/** Small solid heart that punctuates the wordmark. */
 const HEART_GLYPH =
   "M6 10.5 C1.6 7.5 1 5.2 2 3.8 C2.9 2.5 4.8 2.7 6 4.3 C7.2 2.7 9.1 2.5 10 3.8 C11 5.2 10.4 7.5 6 10.5 Z";
 
-// The receiver, drawn on the 40-unit grid as three pieces that union into one
-// silhouette: an oval earpiece (upper-left), a handle that arcs over the top,
-// and — in place of the lower mouthpiece — a heart.
-const EARPIECE = { cx: 13.5, cy: 13, rx: 5.4, ry: 4, rotate: -45 };
-const HANDLE = "M13.5 13 C19 7.5 30 10 28 24";
-const HEART_MOUTH = "translate(27 27) scale(1.15) translate(-6 -6)";
+// The primary glyph: an outer heart with a classic telephone receiver carved
+// out of its lower-left in negative space. Drawn as one `evenodd` path on the
+// 40-unit grid — the heart is the outer contour, the handset the inner one.
+const HEART_CALL_GLYPH =
+  "M20 33.5 C6 24.5 4.6 17.3 7.8 13.2 C10.8 9.4 16.4 10 20 15 " +
+  "C23.6 10 29.2 9.4 32.2 13.2 C35.4 17.3 34 24.5 20 33.5 Z " +
+  "M15 14.6 c-1.9 .35 -3 1.9 -2.65 3.8 c1.35 7.3 7.55 13.5 14.85 14.85 " +
+  "c1.9 .35 3.45-.75 3.8-2.65 c.35-1.75 -.45-2.85 -2.05-3.5 l-2.5-1 " +
+  "c-1.25-.5 -2-.15 -2.75 .65 c-1.9-1.25 -3.45-2.8 -4.7-4.7 " +
+  "c.8-.75 1.15-1.5 .65-2.75 l-1-2.5 c-.65-1.6 -1.75-2.4 -3.5-2.05 Z";
 
 /* -------------------------------------------------------------------------- */
-/* Marks                                                                       */
+/* Mark                                                                        */
 /* -------------------------------------------------------------------------- */
 
 /**
- * Primary mark — a telephone handset whose lower mouthpiece is a heart: the
- * daily call (the receiver) made with love (the heart). `color` paints a cream
- * handset on a solid clay tile; `mono` fills the handset with `currentColor`.
+ * Primary mark — a heart cradling a telephone receiver in negative space: the
+ * daily call (the handset) made with love (the heart). `color` paints a cream
+ * heart on a solid clay tile; `mono` fills the heart with `currentColor`. In
+ * both tones the receiver is a cut-out that reveals the backdrop.
  */
 export function CallHeartMark({ className, tone = "color" }: MarkProps) {
   const mono = tone === "mono";
@@ -67,70 +71,12 @@ export function CallHeartMark({ className, tone = "color" }: MarkProps) {
       aria-hidden="true"
     >
       {!mono && <rect width="40" height="40" rx="12" fill="#C0613F" />}
-
-      {/* Earpiece + handle + heart mouthpiece, all the same fill → one shape. */}
-      <ellipse
-        cx={EARPIECE.cx}
-        cy={EARPIECE.cy}
-        rx={EARPIECE.rx}
-        ry={EARPIECE.ry}
-        transform={`rotate(${EARPIECE.rotate} ${EARPIECE.cx} ${EARPIECE.cy})`}
-        fill={fg}
-      />
-      <path
-        d={HANDLE}
-        fill="none"
-        stroke={fg}
-        strokeWidth="5.5"
-        strokeLinecap="round"
-      />
-      <path transform={HEART_MOUTH} d={HEART_GLYPH} fill={fg} />
+      <path fillRule="evenodd" d={HEART_CALL_GLYPH} fill={fg} />
     </svg>
   );
 }
 
-/**
- * Alternate mark (concept B) — a soft speech bubble cradling a heart. Swap it
- * in everywhere by setting `PrimaryMark = BubbleMark`.
- */
-export function BubbleMark({ className, tone = "color" }: MarkProps) {
-  const mono = tone === "mono";
-  const fg = mono ? "currentColor" : "#FFFCF6";
-
-  return (
-    <svg
-      viewBox="0 0 40 40"
-      className={cn("h-9 w-9", className)}
-      role="img"
-      aria-hidden="true"
-    >
-      {!mono && (
-        <>
-          <defs>
-            <linearGradient id="ci-tile-b" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stopColor="#CB6B46" />
-              <stop offset="1" stopColor="#A8492C" />
-            </linearGradient>
-          </defs>
-          <rect width="40" height="40" rx="12" fill="url(#ci-tile-b)" />
-        </>
-      )}
-      <path
-        d="M12 9.5h16a4 4 0 0 1 4 4v8.5a4 4 0 0 1-4 4h-7.8l-4.9 3.9a1 1 0 0 1-1.6-.8V25.5H12a4 4 0 0 1-4-4V13.5a4 4 0 0 1 4-4Z"
-        fill={mono ? "none" : fg}
-        stroke={mono ? "currentColor" : "none"}
-        strokeWidth="2.2"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M20 22.4 c-3.2-2.1 -3.6-3.8 -2.9-4.8 .6-.9 2-.7 2.9 .4 .9-1.1 2.3-1.3 2.9-.4 .7 1 .3 2.7-2.9 4.8 Z"
-        fill={mono ? "currentColor" : "#A8492C"}
-      />
-    </svg>
-  );
-}
-
-/** The mark used everywhere. Point this at `BubbleMark` to swap concepts. */
+/** The mark used everywhere. */
 export const PrimaryMark = CallHeartMark;
 
 /** Small heart that punctuates the wordmark. */

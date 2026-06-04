@@ -1,8 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
   <rect width="40" height="40" rx="12" fill="#C0613F"/>
-  <!-- Telephone handset whose lower mouthpiece is a heart: earpiece + handle + heart, one cream silhouette. -->
-  <ellipse cx="13.5" cy="13" rx="5.4" ry="4" transform="rotate(-45 13.5 13)" fill="#FFFCF6"/>
-  <path d="M13.5 13 C19 7.5 30 10 28 24" fill="none" stroke="#FFFCF6" stroke-width="5.5" stroke-linecap="round"/>
-  <path transform="translate(27 27) scale(1.15) translate(-6 -6)" fill="#FFFCF6"
-    d="M6 10.5 C1.6 7.5 1 5.2 2 3.8 C2.9 2.5 4.8 2.7 6 4.3 C7.2 2.7 9.1 2.5 10 3.8 C11 5.2 10.4 7.5 6 10.5 Z"/>
+  <!-- A heart with a telephone receiver carved out in negative space: the daily call held with love. One evenodd path; the clay tile shows through the handset. -->
+  <path fill-rule="evenodd" fill="#FFFCF6" d="M20 33.5 C6 24.5 4.6 17.3 7.8 13.2 C10.8 9.4 16.4 10 20 15 C23.6 10 29.2 9.4 32.2 13.2 C35.4 17.3 34 24.5 20 33.5 Z M15 14.6 c-1.9 .35 -3 1.9 -2.65 3.8 c1.35 7.3 7.55 13.5 14.85 14.85 c1.9 .35 3.45-.75 3.8-2.65 c.35-1.75 -.45-2.85 -2.05-3.5 l-2.5-1 c-1.25-.5 -2-.15 -2.75 .65 c-1.9-1.25 -3.45-2.8 -4.7-4.7 c.8-.75 1.15-1.5 .65-2.75 l-1-2.5 c-.65-1.6 -1.75-2.4 -3.5-2.05 Z"/>
 </svg>
